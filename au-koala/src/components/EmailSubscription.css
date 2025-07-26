@@ -1,0 +1,70 @@
+.email-section {
+  background-color: #f7f7f2;
+  padding: 4rem 2rem;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.email-section h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.email-section p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.email-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 700px;
+  margin: 0 auto 1.5rem;
+}
+
+.email-form input {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  flex: 1;
+}
+
+.email-form button {
+  background-color: #6a745e;
+  color: white;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.email-form {
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.small-text {
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.small-text a {
+  color: #0066cc;
+  text-decoration: underline;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}

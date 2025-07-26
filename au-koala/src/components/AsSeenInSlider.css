@@ -1,0 +1,31 @@
+.as-seen-in-wrapper {
+  background-color: #f7f7f3;
+  padding: 24px 16px;
+  border-radius: 12px;
+  text-align: left;
+  overflow: hidden;
+}
+
+.as-seen-in-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.logo-slide {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.logo-img {
+  height: 48px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.logo-img:hover {
+  filter: grayscale(0%);
+}
