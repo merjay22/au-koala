@@ -5,12 +5,14 @@ import dotenv from "dotenv";
 import authRoutes from "./Routes/authRoutes.js"; // ✅ Correct path
 import User from "./user.js";
 import jwt from "jsonwebtoken";
+import morgan from 'morgan';
 
 dotenv.config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(morgan('dev'));
 
 const PORT = process.env.PORT || 5000;
 const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret_key";

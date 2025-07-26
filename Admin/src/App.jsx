@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom"; // ✅ Navigate added
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import morgan from 'morgan';
 
 // ✅ Pages
 import AdminLogin from "../Pages/AdminLogin";
