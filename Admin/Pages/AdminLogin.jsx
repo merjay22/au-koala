@@ -22,7 +22,7 @@ const AdminLogin = () => {
       if (decoded.isAdmin) {
         localStorage.setItem("token", token);
         toast.success("Logged in");
-        navigate("/admin/Dashboard");
+        navigate("/admin/dashboard");
       } else {
         toast.error("You are not an admin");
       }

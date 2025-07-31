@@ -1,9 +1,8 @@
-import { Routes, Route, Navigate } from "react-router-dom"; // ✅ Navigate added
+import { Routes, Route, Navigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import morgan from 'morgan';
 
-// ✅ Pages
+// Pages
 import AdminLogin from "../Pages/AdminLogin";
 import Dashboard from "../Pages/MainPage/Dashboard";
 import UploadProduct from "../Pages/MainPage/UploadProduct";
@@ -11,18 +10,16 @@ import ProductList from "../Pages/MainPage/ProductList";
 import Help from "../Pages/MainPage/Help";
 import Settings from "../Pages/MainPage/Settings";
 
-// ✅ Protected route wrapper
+// Protected wrapper
 import ProtectedRoute from "../Components/ProtectedRoute";
 
 function App() {
   return (
     <>
       <Routes>
-        {/* 🔐 Public Route */}
+        <Route path="/" element={<Navigate to="/admin/login" replace />} />
         <Route path="/admin/login" element={<AdminLogin />} />
 
-
-        {/* 🔒 Protected Routes */}
         <Route
           path="/admin/dashboard"
           element={
@@ -65,7 +62,6 @@ function App() {
         />
       </Routes>
 
-      {/* ✅ Toast Container */}
       <ToastContainer position="top-right" autoClose={3000} />
     </>
   );

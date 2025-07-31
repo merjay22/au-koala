@@ -7,9 +7,12 @@ const SidebarWithTopbar = ({ title, children }) => {
   const items = [
     { name: "Dashboard", icon: FaHome, path: "/admin/dashboard" },
     { name: "Orders", icon: FaBox, path: "/admin/orders" },
+    { name: "Upload Product", icon: FaBox, path: "/admin/upload" },
     { name: "Payments", icon: FaMoneyBill, path: "/admin/payments" },
     { name: "Help", icon: FaQuestionCircle, path: "/admin/help" },
+    { name: "Products", icon: FaBox, path: "/admin/products" },
     { name: "Settings", icon: FaCog, path: "/admin/settings" },
+    
   ];
 
   return (

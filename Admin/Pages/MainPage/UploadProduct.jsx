@@ -10,9 +10,19 @@ const UploadProduct = () => {
     image: null,
   });
 
+  const [products, setProducts] = useState([]); // ✅ Track uploaded products
+
   const handleChange = (e) => {
     if (e.target.name === "image") {
-      setFormData({ ...formData, image: e.target.files[0] });
+      const file = e.target.files[0];
+      if (
+        file &&
+        !["image/jpeg", "image/png", "image/jpg"].includes(file.type)
+      ) {
+        toast.error("Only JPG, JPEG, or PNG files are allowed.");
+        return;
+      }
+      setFormData({ ...formData, image: file });
     } else {
       setFormData({ ...formData, [e.target.name]: e.target.value });
     }
@@ -29,26 +39,100 @@ const UploadProduct = () => {
     data.append("image", formData.image);
 
     try {
-      await axios.post("http://localhost:5000/api/products", data, {
+      const res = await axios.post("http://localhost:5000/api/products", data, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",
         },
       });
-      toast.success("Product uploaded");
+
+      toast.success("✅ Product uploaded successfully");
+
+      // ✅ Append uploaded product to list
+      setProducts((prev) => [...prev, res.data]);
+
+      // ✅ Reset form
+      setFormData({
+        title: "",
+        description: "",
+        price: "",
+        image: null,
+      });
     } catch (err) {
-      toast.error("Upload failed");
+      console.error(err);
+      toast.error("❌ Upload failed");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-10 space-y-4">
-      <input type="text" name="title" placeholder="Title" onChange={handleChange} className="w-full border p-2 rounded" />
-      <textarea name="description" placeholder="Description" onChange={handleChange} className="w-full border p-2 rounded" />
-      <input type="number" name="price" placeholder="Price" onChange={handleChange} className="w-full border p-2 rounded" />
-      <input type="file" name="image" onChange={handleChange} className="w-full border p-2 rounded" />
-      <button type="submit" className="bg-green-600 text-white px-4 py-2 rounded w-full">Upload</button>
-    </form>
+    <div className="max-w-2xl mx-auto mt-10">
+      {/* Upload Form */}
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <input
+          type="text"
+          name="title"
+          placeholder="Title"
+          value={formData.title}
+          onChange={handleChange}
+          className="w-full border p-2 rounded"
+          required
+        />
+        <textarea
+          name="description"
+          placeholder="Description"
+          value={formData.description}
+          onChange={handleChange}
+          className="w-full border p-2 rounded"
+          required
+        />
+        <input
+          type="number"
+          name="price"
+          placeholder="Price"
+          value={formData.price}
+          onChange={handleChange}
+          className="w-full border p-2 rounded"
+          required
+        />
+        <input
+          type="file"
+          name="image"
+          accept=".jpg,.jpeg,.png"
+          onChange={handleChange}
+          className="w-full border p-2 rounded"
+          required
+        />
+        <button
+          type="submit"
+          className="bg-green-600 text-white px-4 py-2 rounded w-full"
+        >
+          Upload
+        </button>
+      </form>
+
+      {/* Uploaded Products Preview */}
+      {products.length > 0 && (
+        <div className="mt-10">
+          <h2 className="text-xl font-semibold mb-4">Uploaded Products</h2>
+          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
+            {products.map((product, index) => (
+              <div key={index} className="border p-4 rounded shadow">
+                <h3 className="text-lg font-bold">{product.title}</h3>
+                <p className="text-sm">{product.description}</p>
+                <p className="text-green-700 font-semibold">₹{product.price}</p>
+                {product.imageUrl && (
+                  <img
+                    src={product.imageUrl}
+                    alt={product.title}
+                    className="mt-2 h-40 w-full object-cover rounded"
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 
