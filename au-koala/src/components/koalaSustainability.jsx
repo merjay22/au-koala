@@ -1,6 +1,6 @@
-// KoalaSustainability.jsx
+// koalaSustainability.jsx
 import React from 'react';
-import './KoalaSustainability.css';
+import './koalaSustainability.css'; 
 
 const sustainabilityData = [
   {

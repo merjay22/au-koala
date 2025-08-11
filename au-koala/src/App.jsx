@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import "./App.css";
-import morgan from 'morgan';
 
 // Common Components
 import Header from "./components/Header";
