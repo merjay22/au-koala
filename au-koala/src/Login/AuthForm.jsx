@@ -42,7 +42,7 @@ const AuthForm = () => {
 
     try {
       setLoading(true);
-      const baseURL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+      const baseURL = import.meta.env.VITE_API_URL || "https://renderbackend-z5e7.onrender.com";
       const url = isLogin
         ? `${baseURL}/api/login`
         : `${baseURL}/api/register`;

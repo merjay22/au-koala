@@ -39,7 +39,7 @@ const UploadProduct = () => {
     data.append("image", formData.image);
 
     try {
-      const res = await axios.post("http://localhost:5000/api/products", data, {
+      const res = await axios.post("https://renderbackend-z5e7.onrender.com/api/products", data, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",

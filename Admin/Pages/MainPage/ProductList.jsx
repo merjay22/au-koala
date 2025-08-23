@@ -7,7 +7,7 @@ const ProductList = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get("http://localhost:5000/api/products", {
+      .get("https://renderbackend-z5e7.onrender.com/api/products", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -24,7 +24,7 @@ const ProductList = () => {
           <h2 className="text-xl font-semibold">{product.title}</h2>
           <p>{product.description}</p>
           <p>₹ {product.price}</p>
-          <img src={`http://localhost:5000/uploads/${product.image}`} alt="product" className="w-32 mt-2" />
+          <img src={`https://renderbackend-z5e7.onrender.com/uploads/${product.image}`} alt="product" className="w-32 mt-2" />
         </div>
       ))}
     </div>

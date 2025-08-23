@@ -11,7 +11,7 @@ const AdminLogin = () => {
   const loginHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/login", {
+      const res = await axios.post("https://renderbackend-z5e7.onrender.com/api/login", {
         email,
         password,
       });
